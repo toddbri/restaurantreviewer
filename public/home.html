@@ -2,20 +2,29 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <title>Restaurant Reviewer</title>
     <style>
       .search {
         padding-top: 300px;
         text-align: center;
       }
-
+      body {
+        background-color: rgb(214, 251, 167);
+        font-family: 'Lato', sans-serif;
+      }
+      #welcome {
+        font-size: 45px;
+      }
     </style>
   </head>
   <body>
     <div class="search">
+      <label id="welcome">Welcome to Restaurant Reviewer</label><br><br><br><br>
     <form action="/search" method="GET">
-      <label>Restaurant Name</label>
-      <input type="text" name="searchTerm">
+
+      <label>Restaurant Name or Category</label>
+      <input size="40" type="text" name="searchTerm">
       <button type="submit">Submit</button>
 
     </form>

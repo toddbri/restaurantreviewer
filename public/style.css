@@ -1,0 +1,14 @@
+
+body {
+  font-family: 'Lato', sans-serif;
+}
+
+.header {
+  height:70px;
+  background-color: rgb(134, 214, 249);
+  text-align: center;
+}
+
+.header a {
+  padding-top: 30px;
+}

@@ -1,6 +1,8 @@
-<h1>Is one of these what you are looking for?</h1>
+<h3>Is one of these what you are looking for?</h3>
 <ol>
   {{#each results}}
-    <li><a href="/restaurant/{{id}}">{{name}}</a></li>
+    <li><a href="/restaurant/{{id}}">{{name}}</a> at {{address}}</li>
   {{/each}}
 </ol>
+
+<h3><a href="/restaurant/new">Add a new restaurant</a></h3>
