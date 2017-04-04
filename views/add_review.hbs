@@ -1,0 +1,27 @@
+<h3>Details</h3>
+{{data.name}}<br>
+{{data.address}}<br>
+{{data.category}}<br>
+
+<h3>Write a review</h3>
+<form onsubmit="return verifyData()" action="/submitReview/{{data.id}}" method="POST">
+  <label>Stars(0-5)</label>
+  <input id="stars" type="text" name="stars"><br><br>
+  <label>Title</label>
+  <input type="text" size="30" name="reviewTitle"><br><br>
+  <label>Comments</label>
+  <input type="text" size="150" name="reviewText"><br><br>
+  <button type="submit">Submit</button>
+
+</form>
+
+<script>
+  function verifyData(){
+var stars = document.getElementById('stars').value;
+    console.log('stars: ' + stars);
+    if (['0','1','2','3','4','5'].indexOf(stars) === -1){
+      alert("please enter a star value between 0 and 5");
+      return false;
+    }
+  }
+</script>

@@ -1,0 +1,14 @@
+<h3>Details</h3>
+{{r1.name}}<br>
+{{r1.address}}<br>
+{{r1.category}}<br>
+
+<h3><a href="/addreview/{{r1.id}}">Add your own review</a></h3>
+
+
+<h3> Reviews</h3>
+<ul>
+  {{#each reviews}}
+    <li>Reviewed by: {{reviewer_name}}<br>Stars: {{stars}}<br>Title: {{title}}<br>Review: {{review}}</li><br>
+  {{/each}}
+</ul>
