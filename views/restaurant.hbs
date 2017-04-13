@@ -2,7 +2,9 @@
 {{r1.name}}<br>
 {{r1.address}}<br>
 {{r1.category}}<br>
-
+<br>
+<div id="myMap" style="position:relative;width:300px;height:300px;"></div>
+<br>
 {{#if hasReviews}}
 
   <h3><a href="/addreview/{{r1.id}}">Add your own review</a></h3>
@@ -23,3 +25,35 @@
 {{/if}}
 
 <h3><a href="/restaurant/new">Add a new restaurant</a></h3>
+<script type="text/javascript">
+var map = null;
+function GetMap()
+{
+    map = new Microsoft.Maps.Map('#myMap', {
+        credentials: 'AlzWdbHU4xXOKuV4us1GDRCj0bUu72MwjQER_sfNXy_1OF6OwdZht5HW6p_WLeMx',
+        mapTypeId: Microsoft.Maps.MapTypeId.road,
+        showMapTypeSelector: false,
+        zoom: 15,
+    });
+
+    Microsoft.Maps.loadModule('Microsoft.Maps.Search', { callback: searchModuleLoaded });
+}
+
+function searchModuleLoaded(){
+  var searchManager = new Microsoft.Maps.Search.SearchManager(map);
+  var geocodeRequest = {where:"{{{r1.address}}}", count:10, callback:geocodeCallback, errorCallback:errCallback};
+  searchManager.geocode(geocodeRequest);
+}
+
+function geocodeCallback(geocodeResult, userData)
+ {
+    console.log(geocodeResult.results.location);
+    map.setView({center: geocodeResult.results[0].location});
+    var pushpin = new Microsoft.Maps.Pushpin(map.getCenter(), null);
+    map.entities.push(pushpin);
+ }
+
+ function errCallback(geocodeRequest)
+ {console.log("An error occurred during geocode request.");}
+
+</script>

@@ -1,0 +1,58 @@
+<h2>Please login first</h2>
+
+{{#if messagePassed}}
+  <p style="color: red">{{message}}</p><br>
+{{/if}}
+
+<form action="/process_login" method="POST">
+
+  <label>Name</label>
+  <input type="text" size="30" name="userName"><br><br>
+  <label>Password</label>
+  <input type="password" size="30" name="userPassword"><br><br>
+
+  <button type="submit">Login</button>
+</form>
+<br>
+<br>
+or create a new account
+<br>
+<br>
+<form action="/create_account" method="POST">
+
+  <label>First Name</label>
+  <input type="text" size="30" name="firstName"><br><br>
+  <label>Last Name</label>
+  <input type="text" size="30" name="lastName"><br><br>
+  <label>username</label>
+  <input onkeyup="checkusername()" type="text" size="30" id="userName" name="userName"><span id="taken"></span><br><br>
+  <label>email</label>
+  <input type="text" size="30" name="email"><br><br>
+  <label>Password</label>
+  <input type="password" size="30" name="userPassword"><br><br>
+  <label>Password confirm</label>
+  <input type="password" size="30" name="userPassword2"><br><br>
+
+  <button type="submit">create</button>
+</form>
+
+<script>
+  function checkusername(){
+    // console.log('username: ' + $('#userName').val());
+    var un = $('#userName').val();
+    $.ajax({
+      url: "/checkusername",
+      type: "POST",
+      data: {username: un}
+    })
+    .then(updatetakenstatus);
+  }
+
+  function updatetakenstatus(status){
+    if (status){;
+      $('#taken').text("user name is taken");
+    } else {
+      $('#taken').text("user name is available");
+    }
+  }
+</script>

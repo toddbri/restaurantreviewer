@@ -4,10 +4,20 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="/style.css">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="http://www.bing.com/api/maps/mapcontrol?callback=GetMap" async defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- <script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script> -->
+    <!-- <script type="text/javascript" src="http://www.bing.com/api/maps/mapcontrol"></script> -->
     <title>{{title}}</title>
   </head>
   <body>
-    <div class="header"><a href="/">Restaurant Reviewer</a></div>
+    <div class="header"><a href="/">Restaurant Reviewer</a>
+      {{#if session.loggedIn}}
+        <p class="username">logged in as: {{session.username}}<br>
+        <a href="/logout">logout</a></p>
+      {{/if}}
+    </div>
     {{{body}}}
   </body>
 </html>
