@@ -11,7 +11,10 @@ const bcrypt = require('bcrypt');
 
 var debugMode = true;
 var db = pgp({
-  database: 'restaurantv2',
+   host: 'localhost',
+   user: 'postgres',
+  password: 'DanglyintheCloud$5',
+   database: 'restaurantv2'
 });
 
 app.use(bodyParser.urlencoded({extended: false}));
@@ -237,7 +240,7 @@ app.get('/logout',(req,resp,next) => {
 
 app.get('/:catchall',(req,resp,next) => resp.redirect('/'));
 
-app.listen(8080,function(){dl("listening on 8080");});
+app.listen(5000,function(){dl("listening on 5000");});
 
 const dl = (message) => {
   if (debugMode){
