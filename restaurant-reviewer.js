@@ -36,10 +36,10 @@ app.use((req,resp,next) => {
   next();
 });
 
-app.use((req,resp,next) => {
-  fs.appendFile('restaurant-request-log-file.txt',req.method + req.path + '\n' + '-----------\n');
-  next();
-});
+// app.use((req,resp,next) => {
+//   fs.appendFile('restaurant-request-log-file.txt',req.method + req.path + '\n' + '-----------\n');
+//   next();
+// });
 
 app.get('/', (req,resp) => resp.redirect('/home.html'));
 
@@ -240,15 +240,13 @@ app.get('/logout',(req,resp,next) => {
 
 app.get('/:catchall',(req,resp,next) => resp.redirect('/'));
 
-app.listen(5000,function(){dl("listening on 5000");});
+app.listen(5001,function(){dl("listening on 5001");});
 
 const dl = (message) => {
   if (debugMode){
     console.log(message);
   }
 };
-
-
 
 
 q=1;
