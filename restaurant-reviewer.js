@@ -8,22 +8,24 @@ const fs = require('fs');
 const hbs = require('hbs');
 const session = require('express-session');
 const bcrypt = require('bcrypt');
+var config = require('./config/dbc.js');
 
 var debugMode = true;
 var db = pgp({
-   host: 'localhost',
-   user: 'postgres',
-  password: 'DanglyintheCloud$5',
-   database: 'restaurantv2'
+    host: config.host,
+    database: config.database,
+    user:  config.user,
+    password: config.password
 });
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static('public'));
 app.set('view engine', 'hbs');
 app.use(session({
-  secret: 'dangly',
-  cookie: {maxAge: 1000000}
-}));
+    secret: secrets.secret,
+    cookie: {maxAge: 600000000}
+  })
+);
 app.use((req,resp,next) => {
   resp.locals.session = req.session;
   next();
