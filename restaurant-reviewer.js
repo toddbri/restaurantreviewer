@@ -17,7 +17,7 @@ var db = pgp({
     user:  config.user,
     password: config.password
 });
-
+console.log('using db: ' + config.database);
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static('public'));
 app.set('view engine', 'hbs');
