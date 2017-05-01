@@ -21,6 +21,7 @@ var db = pgp({
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static('public'));
 app.set('view engine', 'hbs');
+var secrets = require('./config/secret.js');
 app.use(session({
     secret: secrets.secret,
     cookie: {maxAge: 600000000}
